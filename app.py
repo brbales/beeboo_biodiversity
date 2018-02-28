@@ -1,4 +1,5 @@
 # dependencies
+import os
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, desc, inspect
@@ -98,4 +99,5 @@ def idValues(sample):
     return jsonify(values_dict)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port = port, debug=True)
